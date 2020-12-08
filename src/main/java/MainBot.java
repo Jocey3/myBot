@@ -1,16 +1,17 @@
-import menu.ButtonStart;
-import menu.ButtonStop;
+import menu.Buttons;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class MainBot extends JFrame {
     private JPanel panel;
     private JButton butStart;
-    private JPanel butPanel;
     private JButton butStop;
+    private Font guns = getMyFont();
+    private Buttons buttons = new Buttons(guns);
 
     public static void main(String[] args) {
         new MainBot();
@@ -25,20 +26,23 @@ public class MainBot extends JFrame {
 
     private JButton getButStart() {
         butStart = new JButton("Start");
-        butStart.addActionListener(new ButtonStart());
-        butStart.setBackground(Color.BLACK);
-        butStart.setPreferredSize(new Dimension(150, 50));
+        butStart.setFont(guns.deriveFont(45f));
+        butStart.setForeground(Color.BLACK);
+        butStart.setBackground(Color.GREEN);
+        butStart.setPreferredSize(new Dimension(185, 65));
+        butStart.addActionListener(buttons);
+        butStart.setFocusPainted(false);
         return butStart;
     }
 
     private JButton getButStop() {
-
-        Font guns = getMyFont();
         butStop = new JButton("Stop");
-        butStop.setFont(guns);
-        butStop.addActionListener(new ButtonStop());
+        butStop.setFont(guns.deriveFont(45f));
+        butStop.setForeground(Color.BLACK);
         butStop.setBackground(Color.RED);
-        butStop.setPreferredSize(new Dimension(150, 50));
+        butStop.setPreferredSize(new Dimension(185, 65));
+        butStop.addActionListener(buttons);
+        butStop.setFocusPainted(false);
         return butStop;
     }
 
@@ -47,9 +51,9 @@ public class MainBot extends JFrame {
         int h = scrResol.height;
         int w = scrResol.width;
         panel = new JPanel();
-        panel.setPreferredSize(new Dimension(w / 2, h / 4));
+        panel.setPreferredSize(new Dimension(w / 4, h / 4));
         panel.setBackground(Color.BLACK);
-        panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         panel.add(getButStart());
         panel.add(getButStop());
         add(panel);
@@ -60,7 +64,7 @@ public class MainBot extends JFrame {
         setTitle("Steam Bot");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setResizable(false);
+        setResizable(true);
         setVisible(true);
         setIconImage(getIcon());
 
@@ -68,26 +72,18 @@ public class MainBot extends JFrame {
     }
 
     private Font getMyFont() {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(getClass().getResource("font/Mostwasted.ttf").getFile());
+        String po = "src/main/resources/font/Mostwasted.ttf";
+        Font customFont = null;
         try {
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, file));
-
-        } catch (FontFormatException e) {
-            e.fillInStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Font myF = null;
-        try {
-            myF = Font.createFont(Font.TRUETYPE_FONT, file).deriveFont(12f);
+            customFont = Font.createFont(Font.TRUETYPE_FONT, new File(po));
         } catch (FontFormatException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return myF;
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(customFont);
+        return customFont;
     }
 
     private Image getIcon() {
