@@ -1,0 +1,3 @@
+# myBot
+
+Just writing bot for parcing Steam market for cheap skins with good stickers...
