@@ -1,11 +1,11 @@
 package menu;
 
-public class Potok implements Runnable {
+public class PotokStart implements Runnable {
     Thread potok;
     Monitor<Integer> monitor;
 
-    Potok(Monitor<Integer> monitore) {
-        potok = new Thread(this, "Pot");
+    PotokStart(Monitor<Integer> monitore) {
+        potok = new Thread(this, "PotStart");
         this.monitor = monitore;
         potok.start();
     }

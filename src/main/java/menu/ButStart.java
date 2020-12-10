@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class ButStart implements ActionListener {
     Font font;
     Monitor<Integer> monitor;
-    Potok potok;
+    PotokStart potokStart;
 
     public ButStart(Font font, Monitor<Integer> monitor) {
         this.font = font;
@@ -20,6 +20,7 @@ public class ButStart implements ActionListener {
         monitor.setValue(1);
         JButton button= (JButton) actionEvent.getSource();
         button.setEnabled(false);
-        potok = new Potok(monitor);
+        potokStart = new PotokStart(monitor);
+        button.setEnabled(true);
     }
 }

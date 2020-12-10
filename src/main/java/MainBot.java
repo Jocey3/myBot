@@ -1,7 +1,4 @@
-import menu.BLogged;
-import menu.ButStart;
-import menu.ButStop;
-import menu.Monitor;
+import menu.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,10 +14,11 @@ public class MainBot extends JFrame {
     private JButton butStop;
     private JButton butSettings;
 
+
     Monitor<Integer> monitor = new Monitor<>();
 
     private Font guns = getMyFont();
-
+    private ButSettings bset=new ButSettings(guns);
 
     public static void main(String[] args) {
         new MainBot();
@@ -39,7 +37,7 @@ public class MainBot extends JFrame {
         butSettings.setForeground(Color.BLACK);
         butSettings.setBackground(Color.WHITE);
         butSettings.setPreferredSize(new Dimension(100, 50));
-        butSettings.addActionListener(new BLogged(guns));
+        butSettings.addActionListener(bset);
         butSettings.setFocusPainted(false);
         return butSettings;
     }
@@ -83,13 +81,13 @@ public class MainBot extends JFrame {
         int h = scrResol.height;
         int w = scrResol.width;
         panel = new JPanel();
-        panel.setPreferredSize(new Dimension(w / 4, h / 4));
+        panel.setPreferredSize(new Dimension(w / 3, h / 3));
         panel.setBackground(Color.BLACK);
         panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.fill=GridBagConstraints.NORTH;
-        constraints.weightx =0.5;
-        constraints.gridy=0;
+        constraints.fill = GridBagConstraints.NORTH;
+        constraints.weightx = 0.5;
+        constraints.gridy = 0;
         panel.add(getButSettings());
 
         panel.add(getButStart());
