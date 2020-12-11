@@ -1,5 +1,7 @@
 package menu;
 
+import menu.start.PotokStart;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,9 +20,9 @@ public class ButStart implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         monitor.setValue(1);
-        JButton button= (JButton) actionEvent.getSource();
-        button.setEnabled(false);
+        JButton button = (JButton) actionEvent.getSource();
         potokStart = new PotokStart(monitor);
         button.setEnabled(true);
+
     }
 }

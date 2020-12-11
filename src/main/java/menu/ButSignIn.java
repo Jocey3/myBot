@@ -1,14 +1,17 @@
 package menu;
 
+import selenium.SeleniumManage;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class BLogged implements ActionListener {
+public class ButSignIn implements ActionListener {
     Font font;
+    SeleniumManage seleniumManage;
 
-    public BLogged(Font font) {
+    public ButSignIn(Font font) {
         this.font = font;
     }
 
@@ -18,7 +21,7 @@ public class BLogged implements ActionListener {
         start.setForeground(Color.BLACK);
         start.setBackground(Color.DARK_GRAY);
         start.setEnabled(false);
-
+        seleniumManage=new SeleniumManage();
 
     }
 }

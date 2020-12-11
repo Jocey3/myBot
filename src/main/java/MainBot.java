@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class MainBot extends JFrame {
     private JPanel panel;
-    private JButton butLogIn;
+    private JButton butSignIn;
     private JButton butLogOut;
     private JButton butStart;
     private JButton butStop;
@@ -18,7 +18,7 @@ public class MainBot extends JFrame {
     Monitor<Integer> monitor = new Monitor<>();
 
     private Font guns = getMyFont();
-    private ButSettings bset=new ButSettings(guns);
+    private ButSettings bset = new ButSettings(guns);
 
     public static void main(String[] args) {
         new MainBot();
@@ -42,15 +42,15 @@ public class MainBot extends JFrame {
         return butSettings;
     }
 
-    private JButton getButLogIn() {
-        butLogIn = new JButton("Sign in");
-        butLogIn.setFont(guns.deriveFont(45f));
-        butLogIn.setForeground(Color.BLACK);
-        butLogIn.setBackground(Color.GREEN);
-        butLogIn.setPreferredSize(new Dimension(185, 65));
-        butLogIn.addActionListener(new BLogged(guns));
-        butLogIn.setFocusPainted(false);
-        return butLogIn;
+    private JButton getButSignIn() {
+        butSignIn = new JButton("Sign in");
+        butSignIn.setFont(guns.deriveFont(45f));
+        butSignIn.setForeground(Color.BLACK);
+        butSignIn.setBackground(Color.WHITE);
+        butSignIn.setPreferredSize(new Dimension(185, 65));
+        butSignIn.addActionListener(new ButSignIn(guns));
+        butSignIn.setFocusPainted(false);
+        return butSignIn;
     }
 
     private JButton getButStart() {
@@ -61,6 +61,7 @@ public class MainBot extends JFrame {
         butStart.setPreferredSize(new Dimension(185, 65));
         butStart.addActionListener(new ButStart(guns, monitor));
         butStart.setFocusPainted(false);
+
         return butStart;
     }
 
@@ -89,7 +90,7 @@ public class MainBot extends JFrame {
         constraints.weightx = 0.5;
         constraints.gridy = 0;
         panel.add(getButSettings());
-
+        panel.add(getButSignIn());
         panel.add(getButStart());
         panel.add(getButStop());
         add(panel);

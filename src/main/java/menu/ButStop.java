@@ -1,5 +1,6 @@
 package menu;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,5 +17,6 @@ public class ButStop implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         monitor.setValue(0);
+
     }
 }

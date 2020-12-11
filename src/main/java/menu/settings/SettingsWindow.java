@@ -49,8 +49,8 @@ public class SettingsWindow extends JFrame {
         panel.add(pass);
         panel.add(new JLabel("  Skin link:"));
         panel.add(link);
-        panel.add(new JLabel("Delay in seconds:"));
         panel.add(new JLabel("                        "));
+        panel.add(new JLabel("Delay in seconds:"));
         panel.add(comboBox);
         panel.add(new JLabel("                        "));
         panel.add(getButOK());
