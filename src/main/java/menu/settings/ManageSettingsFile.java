@@ -7,13 +7,14 @@ import java.util.regex.Pattern;
 public class ManageSettingsFile {
 
     private SettingsData settingsData;
-    Pattern patternInfo = Pattern.compile("login:\"(.*?)\",pass:\"(.*?)\",link:\"(.*?)\",period:\"(\\d*)\".");
+    Pattern patternInfo = Pattern.compile("login:\"(.*?)\",pass:\"(.*?)\",link:\"(.*?)\",period:\"(\\d*)\",stickersSum:\"(\\d*)\".");
 
-    ManageSettingsFile() {
+    public ManageSettingsFile() {
         initSettingsData();
     }
 
     public SettingsData getSettingsData() {
+
         return settingsData;
     }
 
@@ -23,7 +24,7 @@ public class ManageSettingsFile {
             String info = br.readLine();
             Matcher matcher = patternInfo.matcher(info);
             if (matcher.find()) {
-                settingsData = new SettingsData(matcher.group(1), matcher.group(2), matcher.group(3), Integer.parseInt(matcher.group(4)));
+                settingsData = new SettingsData(matcher.group(1), matcher.group(2), matcher.group(3), Integer.parseInt(matcher.group(4)), Integer.parseInt(matcher.group(5)));
             }
 
         } catch (FileNotFoundException e) {
@@ -39,7 +40,7 @@ public class ManageSettingsFile {
 
     private void writeInFileSettings(SettingsData settingsData) {
         try {
-            String info = "login:\"" + settingsData.userName + "\",pass:\"" + settingsData.pass + "\",link:\"" + settingsData.link + "\",period:\"" + settingsData.period + "\".";
+            String info = "login:\"" + settingsData.userName + "\",pass:\"" + settingsData.pass + "\",link:\"" + settingsData.link + "\",period:\"" + settingsData.period + "\",stickersSum:\"" + settingsData.stickersSum + "\".";
             BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/java/menu/settings/Settings", false));
             bw.write(info);
             bw.close();

@@ -9,8 +9,9 @@ public class SeleniumManage {
     WebDriver driver;
     SeleniumActions selActions;
 
-    public SeleniumManage(){
+    public SeleniumManage() {
         openChromeDriver();
+        selActions.signIn();
     }
 
     private void openChromeDriver() {

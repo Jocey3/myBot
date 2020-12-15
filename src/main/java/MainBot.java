@@ -14,10 +14,9 @@ public class MainBot extends JFrame {
     private JButton butStop;
     private JButton butSettings;
 
-
     Monitor<Integer> monitor = new Monitor<>();
 
-    private Font guns = getMyFont();
+    private Font guns = getMyFont(); //Як краще по памяті, так, чи создать менеджер фонта в окремому пакеті...
     private ButSettings bset = new ButSettings(guns);
 
     public static void main(String[] args) {

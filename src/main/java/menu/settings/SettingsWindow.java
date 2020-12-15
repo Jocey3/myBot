@@ -12,6 +12,7 @@ public class SettingsWindow extends JFrame {
     JTextField username = new JTextField("username", 30);
     JTextField pass = new JTextField("pass", 30);
     JTextField link = new JTextField("skin link", 30);
+    JSpinner stickersSum = new JSpinner(new SpinnerNumberModel(5, 0, 1000, 5));
     JComboBox comboBox = getComboBox();
     Integer period = 1;
 
@@ -47,12 +48,12 @@ public class SettingsWindow extends JFrame {
         panel.add(username);
         panel.add(new JLabel("Password:"));
         panel.add(pass);
-        panel.add(new JLabel("  Skin link:"));
+        panel.add(new JLabel("Skin link:"));
         panel.add(link);
-        panel.add(new JLabel("                        "));
+        panel.add(new JLabel("Minimum amount of stickers:"));
+        panel.add(stickersSum);
         panel.add(new JLabel("Delay in seconds:"));
         panel.add(comboBox);
-        panel.add(new JLabel("                        "));
         panel.add(getButOK());
         add(panel);
 
@@ -72,7 +73,7 @@ public class SettingsWindow extends JFrame {
 
     private void saveSettings() {
         manage = new ManageSettingsFile();
-        manage.writeInSettings(new SettingsData(username.getText(), pass.getText(), link.getText(), period));
+        manage.writeInSettings(new SettingsData(username.getText(), pass.getText(), link.getText(), period, (Integer) stickersSum.getValue()));
     }
 
     private JButton getButOK() {
@@ -87,8 +88,6 @@ public class SettingsWindow extends JFrame {
                 JButton button = (JButton) actionEvent.getSource();
                 button.setEnabled(false);
                 saveSettings();
-
-
             }
         });
         butOK.setFocusPainted(false);

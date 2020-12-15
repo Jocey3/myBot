@@ -1,4 +1,4 @@
-package baza;
+package baza.proxy;
 
 public class MyProxy {
 }
